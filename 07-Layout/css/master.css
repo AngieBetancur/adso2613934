@@ -27,9 +27,110 @@ body {
     main {
 
         height: 800px;
+        position: relative;
         width: 400px;
         overflow: hidden;
         background: url(../images/bg-main.png) no-repeat center;
+
+        header {
+            position: relative;
+            z-index: 3;
+
+            svg.btn-burger {
+                cursor: pointer;
+                transition: transform 400ms;
+                user-select: none;
+                position: relative;
+
+                .line {
+                    fill: none;
+                    transition: stroke-dasharray 400ms,
+                        stroke-dashoffset 400ms;
+                    stroke: var(--txt-color);
+                    stroke-width: 4;
+                    stroke-linecap: round;
+                }
+
+                .top {
+                    stroke-dasharray: 40 121;
+                }
+
+                .bottom {
+                    stroke-dasharray: 40 121;
+                }
+            }
+
+            svg.btn-burger.active {
+                transform: rotate(45deg);
+
+                .top {
+                    stroke-dashoffset: -68px;
+                }
+
+                .bottom {
+                    stroke-dashoffset: -68px;
+                }
+            }
+        }
+
+        nav.nav {
+            background-color: #0009;
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 800px;
+            padding-top: 10rem;
+            position: absolute;
+            top: 0;
+            transform: translateY(-60%) scale(0);
+            transition: transform 0.4s ease-in-out;
+            z-index: 2;
+            width: 400px;
+
+            img.title-menu {
+                margin-block: 2rem;
+            }
+        }
+
+        nav.nav.active {
+            opacity: 1;
+            transform: translateY(0%);
+        }
+
+        menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            a:is(:link, :visited) {
+                background: url(../images/btn.png) no-repeat center;
+                color: var(--txt-color);
+                font-size: 20px;
+                font-weight: 400;
+                height: 60px;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                gap: 0.6rem;
+                padding-left: 20px;
+                margin-top: 1.2rem;
+                transition: all 0.4s ease-in;
+                text-decoration: none;
+                width: 300px;
+            }
+
+            a:is(:hover) {
+                background: url(../images/bnt-hover.png) no-repeat center;
+                transform: scale(1.02) translateY(-4px);
+            }
+
+            a:is(:active) {
+                background: url(../images/bnt-active.png) no-repeat center;
+            }
+        }
     }
 }
 
@@ -162,28 +263,37 @@ main.welcome {
 /* 02 - C A T A L O G U E */
 /*----------------------------------------*/
 main.catalogue {
-    header {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-block: 0.5rem;
-    }
+    scrollbar-width: none;
+    overflow: scroll;
 
-    section.owl-carousel {
+    header {
+        margin-top: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        a.btn-back:is(:link, :visited) {
+            transition: transform 0.4s ease-in;
+        }
+
+        a.btn-back:is(:hover) {
+            transform: translateX(-4px);
+        }
+    }
+    div.owl-carousel {
         div.owl-item {
             display: flex;
             justify-content: center;
-            margin-block: 1rem;
 
             img {
-                height: 115px;
-                width: 115px;
+                height: 120px;
+                width: 120px;
             }
         }
 
         div.owl-nav {
             position: relative;
-            top: -110px;
+            top: -180px;
             display: flex;
             justify-content: space-between;
 
@@ -223,60 +333,5 @@ main.catalogue {
             }
         }
 
-        div.owl-dots {
-            position: relative;
-            top: -46px;
-
-            button {
-                transition: transform 0.2s ease-in;
-            }
-
-            button:is(:hover) {
-                transform: scale(1.1);
-            }
-
-            button.owl-dot {
-                span {
-                    background-color: var(--color-second);
-                    height: 16px;
-                    width: 16px;
-                }
-            }
-
-            button.owl-dot.active,
-            button.owl-dot:is(:hover) {
-                span {
-                    background-color: var(--color-third);
-                    height: 16px;
-                    width: 16px;
-                }
-            }
-        }
-    }
-
-    footer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        a:is(:link, :visited) {
-            background: url(../images/Filter.png) no-repeat center;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 5.2rem;
-            transition: all 0.4s ease-in;
-            width: 300px;
-        }
-
-        a:is(:hover) {
-            background: url(../images/btn-hover.png) no-repeat center;
-            transform: scale(1.02) translate(-5px);
-        }
-
-        a:is(:active) {
-            background: url(../images/btn-active.png) no-repeat center;
-        }
     }
 }
