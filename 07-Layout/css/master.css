@@ -10,18 +10,17 @@
     --color-fourth: #F2613F;
     --txt-color: #fff;
 }
+
 /*----------------------------------------*/
 /* P R E L O A D */
 /*----------------------------------------*/
-body:after{
+body:after {
     position: absolute;
     height: 0;
     overflow: hidden;
     width: 0;
     z-index: -1;
-    content: url(../images/btn-hover.png)
-            url(../images/btn-active.png)
-            url(../images/btn-view.png);
+    content: url(../images/btn-hover.png) url(../images/btn-active.png) url(../images/btn-view.png);
 }
 
 /*----------------------------------------*/
@@ -38,6 +37,34 @@ body {
     min-height: 100vh;
 
     main {
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: var(--ff-heading);
+    
+            a:is(:link, :visited) {
+                background: url(../images/btn.png) no-repeat center;
+                height: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 3rem;
+                transition: all 0.4s ease-in;
+                width: 300px;
+                color: var(--txt-color);
+                font-size: 2rem;
+            }
+    
+            a:is(:hover) {
+                background: url(../images/btn-hover.png) no-repeat center;
+                transform: scale(1.1) translateY(-5);
+            }
+    
+            a:is(:active) {
+                background: url(../images/btn-active.png) no-repeat center;
+            }
+        }
 
         height: 800px;
         position: relative;
@@ -46,6 +73,19 @@ body {
         background: url(../images/bg-main.png) no-repeat center;
 
         header {
+            margin-top: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            a.btn-back:is(:link, :visited) {
+                transition: transform 0.4s ease-in;
+            }
+
+            a.btn-back:is(:hover) {
+                transform: translateX(-4px);
+            }
+
             position: relative;
             z-index: 3;
 
@@ -242,79 +282,42 @@ main.welcome {
         }
     }
 
-    footer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: var(--ff-heading);
-
-        a:is(:link, :visited) {
-            background: url(../images/btn.png) no-repeat center;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 3rem;
-            transition: all 0.4s ease-in;
-            width: 300px;
-            color: var(--txt-color);
-            font-size: 2rem;
-        }
-
-        a:is(:hover) {
-            background: url(../images/btn-hover.png) no-repeat center;
-            transform: scale(1.1) translateY(-5);
-        }
-
-        a:is(:active) {
-            background: url(../images/btn-active.png) no-repeat center;
-        }
-    }
+    
 }
 
 /*----------------------------------------*/
 /* 02 - C A T A L O G U E */
 /*----------------------------------------*/
 main.catalogue {
-    
-    header {
-        margin-top: 0.5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
 
-        a.btn-back:is(:link, :visited) {
-            transition: transform 0.4s ease-in;
-        }
-
-        a.btn-back:is(:hover) {
-            transform: translateX(-4px);
-        }
-    }
-    section.scroll{
+    section.scroll {
         scrollbar-width: none;
         overflow-y: scroll;
         height: 640px;
+
         form {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 2rem;
+
             input {
                 border: none;
                 background: url(../images/ico-filter.svg) no-repeat 260px center,
-                            url(../images/bg-input-filter.png) no-repeat center;
+                    url(../images/bg-input-filter.png) no-repeat center;
                 color: var(--txt-color);
                 height: 60px;
                 outline: none;
                 text-indent: 16px;
                 width: 298px;
+
                 &::placeholder {
                     opacity: .7;
                     color: var(--txt-color);
                 }
             }
         }
+
         article {
             h2 {
                 display: flex;
@@ -326,6 +329,7 @@ main.catalogue {
                 margin-bottom: 1rem;
                 gap: 1rem;
             }
+
             figure {
                 figcaption {
                     color: var(--txt-color);
@@ -333,6 +337,7 @@ main.catalogue {
                     margin-block: 0.6rem;
                     font-size: 16px;
                 }
+
                 a:is(:link, :visited) {
                     background: url(../images/btn-view.png) no-repeat center;
                     color: var(--txt-color);
@@ -343,40 +348,45 @@ main.catalogue {
                     gap: 1rem;
                     text-decoration: none;
                     width: 120px;
+
                     img {
                         width: 18px;
                     }
                 }
+
                 a:is(:hover) {
                     background: url(../images/btn-hover.png) no-repeat center;
                     transform: scale(1.1) translateY(-5);
                 }
-        
+
                 a:is(:active) {
                     background: url(../images/btn-active.png) no-repeat center;
                 }
             }
         }
+
         div.owl-carousel {
             height: 210px;
+
             div.owl-item {
                 display: flex;
                 justify-content: center;
+
                 img.slide {
                     height: 120px;
                     width: 120px;
                 }
             }
-    
+
             div.owl-nav {
                 position: relative;
                 top: -168px;
                 display: flex;
                 justify-content: space-between;
-    
+
                 button {
                     transition: transform 0.2s ease-in;
-    
+
                     span {
                         display: flex;
                         height: 44px;
@@ -384,32 +394,82 @@ main.catalogue {
                         text-indent: -9999px;
                     }
                 }
-    
+
                 button:is(:hover) {
                     background-color: transparent;
                 }
-    
+
                 button.owl-prev {
                     span {
                         background: url(../images/btn-prev.png) no-repeat center;
                     }
                 }
-    
+
                 button.owl-prev:hover {
                     transform: scale(1.1) translateX(-4px);
                 }
-    
+
                 button.owl-next {
                     span {
                         background: url(../images/btn-next.png) no-repeat center;
                     }
                 }
-    
+
                 button.owl-next:hover {
                     transform: scale(1.1) translateX(-4px);
                 }
             }
-    
+
+        }
+    }
+}
+/*----------------------------------------*/
+/* 03- V I E W  G A M E */
+/*----------------------------------------*/
+main.view-game{
+    header{
+        margin-bottom: 1rem;
+        h1 {
+            font-family: var(--ff-heading);
+            font-size: 24px;
+            color: var(--txt-color);
+        }
+    }
+    section{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: .5rem;
+        justify-content: center;
+        article{
+            display: flex;
+            flex-direction: column;
+            display: flex;
+            width: 296px;
+            div.row{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                div.column{
+                    h4{
+                        font-family: var(--ff-heading);
+                        font-size: 20px;
+                        color: var(--txt-color);
+                    }
+                    p{
+                        font-family: var(--ff-body);
+                        color: var(--txt-color);
+                        font-size: 16px;
+                        line-height: 1.2rem;
+                        text-align: justify;
+                        &.price{
+                            color: var(--txt-color);
+                            font-weight: 400;
+                            font-size: 36px;
+                        }
+                    }
+                }
+            }
         }
     }
 }
