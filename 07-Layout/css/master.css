@@ -37,12 +37,18 @@ body {
     min-height: 100vh;
 
     main {
+        section.scroll {
+            scrollbar-width: none;
+            overflow-y: scroll;
+            height: 640px;
+        }
+
         footer {
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: var(--ff-heading);
-    
+
             a:is(:link, :visited) {
                 background: url(../images/btn.png) no-repeat center;
                 height: 60px;
@@ -55,12 +61,12 @@ body {
                 color: var(--txt-color);
                 font-size: 2rem;
             }
-    
+
             a:is(:hover) {
                 background: url(../images/btn-hover.png) no-repeat center;
                 transform: scale(1.1) translateY(-5);
             }
-    
+
             a:is(:active) {
                 background: url(../images/btn-active.png) no-repeat center;
             }
@@ -282,7 +288,7 @@ main.welcome {
         }
     }
 
-    
+
 }
 
 /*----------------------------------------*/
@@ -291,9 +297,7 @@ main.welcome {
 main.catalogue {
 
     section.scroll {
-        scrollbar-width: none;
-        overflow-y: scroll;
-        height: 640px;
+
 
         form {
             display: flex;
@@ -423,46 +427,54 @@ main.catalogue {
         }
     }
 }
+
 /*----------------------------------------*/
 /* 03- V I E W  G A M E */
 /*----------------------------------------*/
-main.view-game{
-    header{
+main.view-game {
+    header {
         margin-bottom: 1rem;
+
         h1 {
             font-family: var(--ff-heading);
             font-size: 24px;
             color: var(--txt-color);
         }
     }
-    section{
+
+    section {
         display: flex;
         align-items: center;
         flex-direction: column;
         gap: .5rem;
         justify-content: center;
-        article{
+
+        article {
             display: flex;
             flex-direction: column;
             display: flex;
             width: 296px;
-            div.row{
+
+            div.row {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                div.column{
-                    h4{
+
+                div.column {
+                    h4 {
                         font-family: var(--ff-heading);
                         font-size: 20px;
                         color: var(--txt-color);
                     }
-                    p{
+
+                    p {
                         font-family: var(--ff-body);
                         color: var(--txt-color);
                         font-size: 16px;
                         line-height: 1.2rem;
                         text-align: justify;
-                        &.price{
+
+                        &.price {
                             color: var(--txt-color);
                             font-weight: 400;
                             font-size: 36px;
@@ -473,3 +485,115 @@ main.view-game{
         }
     }
 }
+
+/*----------------------------------------*/
+/* 03- L O G I N */
+/*----------------------------------------*/
+main.login,
+main.register {
+    header {
+        .btn-back {
+            visibility: hidden;
+            pointer-events: none;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    section {
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+
+            div.form-group {
+                display: flex;
+                flex-wrap: wrap;
+                position: relative;
+                gap: .2rem;
+                flex-direction: column;
+                width: 300px;
+
+                label {
+                    display: flex;
+                    color: var(--txt-color);
+                    font-family: var(--ff-heading);
+                    gap: 0.6rem;
+                    font-size: 20px;
+                }
+
+                input {
+                    border: none;
+                    background: url(../images/input-login.png) no-repeat center;
+                    outline: none;
+                    font-size: 18px;
+                    font-weight: 300;
+                    color: var(--txt-color);
+                    text-indent: 1rem;
+                    height: 65px;
+                    width: 300px;
+
+                    &::placeholder {
+                        color: var(--txt-color);
+                        opacity: 0.6;
+                    }
+                }
+
+                img.ico-eye {
+                    cursor: pointer;
+                    position: absolute;
+                    top: 39px;
+                    right: 5px;
+                }
+
+                button {
+                    background: url(../images/btn-inicio.png) no-repeat center;
+                    height: 60px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: none;
+                    margin-top: .1rem;
+                    transition: all 0.2s ease-in;
+                    width: 300px;
+                    cursor: pointer;
+                }
+
+                button:is(:hover) {
+                    background: url(../images/content-btn-login.png) no-repeat center;
+                    transform: scale(1.02) translate(-5px);
+                }
+
+                a:is(:link, :visited) {
+                    color: var(--txt-color);
+                            font-size: 16px;
+                            justify-content: center;
+                    }
+
+                    .mask {
+                        mask-image: url(../images/shape-photo.svg);
+                        mask-repeat: no-repeat;
+                        mask-position: center top;
+                        object-fit: contain;
+                        align-self: center;
+                        height: 200px;
+                        width: 200px;
+                        margin-bottom: 1rem;
+                    }
+                    .border{
+                        cursor: pointer;
+                        position: absolute;
+                        left: 73px;
+                        top: -35;
+                    }
+                    #upload{
+                        cursor: pointer;
+                    }
+                    #photo{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
