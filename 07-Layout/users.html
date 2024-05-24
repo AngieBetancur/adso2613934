@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GameApp - Login</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/master.css">
+</head>
+
+<body>
+	<main class="users">
+		<header>
+            <a href="dashboard.html" class="btn-back">
+                <img src="images/btn-back.png" alt="Back">
+            </a>
+            <img src="images/logo-user.png" alt="">
+            <svg class="btn-burger" viewBox="0 0 100 100" width="80">
+                <path
+                    class="line top"
+                    d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
+                <path
+                    class="line middle"
+                    d="m 70,50 h -40" />
+                <path
+                    class="line bottom"
+                    d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
+            </svg>
+        </header>
+		<nav class="nav">
+			<menu>
+				<a href="profile.html">
+					<img src="images/ico-login.svg" alt="">
+					My Profile
+				</a>
+				<a href="collection.html">
+					<img src="images/ico-categories.svg" alt="">
+					My Collection
+				</a>
+				<a href="index.html">
+					<img src="images/ico-logout.svg" alt="">
+					Logout
+				</a>
+			</menu>
+		</nav>
+		<section>
+				<a class="btn-add" href="add-user.html">
+					<img src="images/btn-add.svg" alt="">
+				</a>
+				<article class="record">
+                    <aside>
+						<img class="icon" src="images/user1.svg" alt="">
+					</aside>
+					<img class="title" src="images/title-user1.svg" alt="">
+                    <figure class="actions">
+                        <a href="view-user.html">
+                            <img src="images/ico-search.svg" alt="Show">
+                        </a>
+                        <a href="edit.html">
+                            <img src="images/ico-edit.svg" alt="Edit">
+                        </a>
+                        <a href="javascript:;">
+                            <img src="images/ico-delete.svg" alt="Delete">
+                        </a>
+                    </figure>
+                </article>
+			
+		</section>
+	</main>
+
+	<script src="js/jquery-3.7.1.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('header').on('click', '.btn-burger', function () {
+				$(this).toggleClass('active')
+				$('.nav').toggleClass('active')
+			})
+
+			$togglePass = false
+			$('section').on('click', '.ico-eye', function () {
+				!$togglePass ? $(this).next().attr('type', 'text')
+					: $(this).next().attr('type', 'password')
+				!$togglePass ? $(this).attr('src', 'images/ico-eye-hidden.svg')
+					: $(this).attr('src', 'images/ico-eye.svg')
+				$togglePass = !$togglePass
+			})
+		})
+	</script>
+</body>
+
+</html>
