@@ -645,92 +645,146 @@ main.dashboard {
 /*----------------------------------------*/
 /* 05- U S E R S */
 /*----------------------------------------*/
-main.users{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        article.module {
-            background: url(../images/module-users.svg) no-repeat center;
-            display: flex;
-            flex-wrap: wrap;
-            position: relative;
-            gap: .6rem;
-            height: 120px;
-            width: 300px;
-            aside {
-                padding-left: 1.4rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                img.icon {
-                    width: 92px;
-                }
-                span {
-                    font-size: 24px;
-                    color: var(--txt-color);
-                }
-            }
-            a:is(:link, :visited) {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-            }
-            a:is(:hover) {
-                background: url(../images/btn-hover.png) no-repeat center;
-                transform: scale(1.1) translateY(-5);
-            }
-
-            a:is(:active) {
-                background: url(../images/btn-active.png) no-repeat center;
-            }
-            img.title {
-                width: auto;
-            }
-            a:is(:link, :visited) {
-                position: absolute;
-                bottom: 10px;
-                right: 20px;
-            }
-        }
-        .mask {
-            mask-image: url(../images/shape-photo.svg);
-            mask-repeat: no-repeat;
-            mask-position: center top;
-            object-fit: contain;
-            align-self: center;
-            height: 200px;
-            width: 200px;
-            margin-bottom: 1rem;
+main.users {
+    header {
+        .btn-back {
+            visibility: visible;
+            pointer-events: all;
         }
     }
-    figure.actions {
-        background: url(../images/crud.svg) no-repeat center;
-        height: 40px;
-        position: absolute;
+    section {
+        scrollbar-width: none;
+        overflow-y: scroll;
+        height: 600px;
+        div.area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .6rem;
+        }
+        a.add:is(:link, :visited) {
+            background: url(../images/bg-btn-add.png) no-repeat center;
+            color: var(--color-fourth);
+            height: 30px;
+            display: flex;
+            margin-bottom: 1rem;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 300;
+            justify-content: center;
+            gap: 1rem;
+            text-decoration: none;
+            transition: all 0.4s ease-in;
+            width: 150px;
+            img {
+                width: 70px;
+            }
+        }
+        a.add:is(:hover) {
+            background: url(../images/btn-hover.png) no-repeat center;
+            transform: scale(1.02) translateY(-4px);
+        }
+        a.add:is(:active) {
+            background: url(../images/btn-active.png) no-repeat center;
+        }
+        article.record {
+            background: url(../images/bg-row-odd.png) no-repeat center;
+            display: flex;
+            align-items: center;
+            position: relative;
+            gap: 0.6rem;
+            height: 100px;
+            width: 340px;
+            figure.avatar {
+                position: relative;
+                padding-left: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .border {
+                    position: absolute;
+                    left: 20px;
+                    top: -1px;
+                }
+                .mask {
+                    mask-image: url(../images/shape-photo-small.svg);
+                    mask-repeat: no-repeat;
+                    mask-position: center top;
+                    object-fit: cover;
+                    align-self: center;
+                    position: relative;
+                    height: 50px;
+                    width: 50px;
+                }
+    
+            }
+            aside {
+                h3 {
+                    color: var(--txt-color);
+                    font-size: 18px;
+                    font-weight: 700;
+                    position: absolute;
+                    left: 90px;
+                    top: 20px;
+                }
+                h4 {
+                    color: var(--txt-color);
+                    font-size: 14px;
+                    font-weight: 500;
+                    position: absolute;
+                    left: 90px;
+                    top: 50px;
+
+                }
+            }
+            figure.actions {
+                background: url(../images/crud.svg) no-repeat center;
+                height: 40px;
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                bottom: 8px;
+                right: 8px;
+                width: 120px;
+                a:is(:link, :visited) {
+                    transition: all 0.2s ease-in;
+                    opacity: 0.7;
+                    padding: 4px;
+                    text-decoration: none;
+                    transform: scale(0.9);
+                }
+                a:is(:hover) {
+                    opacity: 1;
+                    transform: scale(1.05);
+                }
+            }
+        }
+        article.record:nth-child(even) {
+            background: url(../images/bg-row-odd.png) no-repeat center;
+        }
+    }
+    div.paginate {
         display: flex;
         align-items: center;
-        justify-content: space-around;
-        bottom: 8px;
-        right: 8px;
-        width: 120px;
+        justify-content: space-between;
+        width: 380px;
+        margin-top: 0.8rem;
+        margin-inline: auto;
+        span {
+            color: var(--txt-color);
+            font-size: 16px;
+            font-weight: 400;
+        }
         a:is(:link, :visited) {
             transition: all 0.2s ease-in;
-            opacity: 0.7;
-            padding: 4px;
             text-decoration: none;
-            transform: scale(0.9);
         }
-        a:is(:hover) {
-            opacity: 1;
-            transform: scale(1.05);
+        a.btn-prev:is(:hover) {
+            transform: scale(1.1) translateX(-1px);
+        }
+        a.btn-next:is(:hover) {
+            transform: scale(1.1) translateX(1px);
         }
     }
 }
