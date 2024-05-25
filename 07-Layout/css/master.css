@@ -567,36 +567,40 @@ main.register {
 
                 a:is(:link, :visited) {
                     color: var(--txt-color);
-                            font-size: 16px;
-                            justify-content: center;
-                    }
+                    font-size: 16px;
+                    justify-content: center;
+                }
 
-                    .mask {
-                        mask-image: url(../images/shape-photo.svg);
-                        mask-repeat: no-repeat;
-                        mask-position: center top;
-                        object-fit: contain;
-                        align-self: center;
-                        height: 200px;
-                        width: 200px;
-                        margin-bottom: 1rem;
-                    }
-                    .border{
-                        cursor: pointer;
-                        position: absolute;
-                        left: 73px;
-                        top: -35;
-                    }
-                    #upload{
-                        cursor: pointer;
-                    }
-                    #photo{
-                        display: none;
-                    }
+                .mask {
+                    mask-image: url(../images/shape-photo.svg);
+                    mask-repeat: no-repeat;
+                    mask-position: center top;
+                    object-fit: contain;
+                    align-self: center;
+                    height: 200px;
+                    width: 200px;
+                    margin-bottom: 1rem;
+                }
+
+                .border {
+                    cursor: pointer;
+                    position: absolute;
+                    left: 73px;
+                    top: -35;
+                }
+
+                #upload {
+                    cursor: pointer;
+                }
+
+                #photo {
+                    display: none;
                 }
             }
         }
     }
+}
+
 /*----------------------------------------*/
 /* 04- D A S H B O A R D */
 /*----------------------------------------*/
@@ -605,10 +609,12 @@ main.dashboard {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+
     section {
         display: flex;
         flex-direction: column;
         gap: 1rem;
+
         article.module {
             background: url(../images/module-users.svg) no-repeat center;
             display: flex;
@@ -617,23 +623,28 @@ main.dashboard {
             gap: .6rem;
             height: 120px;
             width: 300px;
+
             aside {
                 padding-left: 1.4rem;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+
                 img.icon {
                     width: 92px;
                 }
+
                 span {
                     font-size: 24px;
                     color: var(--txt-color);
                 }
             }
+
             img.title {
                 width: auto;
             }
+
             a:is(:link, :visited) {
                 position: absolute;
                 bottom: 10px;
@@ -642,6 +653,7 @@ main.dashboard {
         }
     }
 }
+
 /*----------------------------------------*/
 /* 05- U S E R S */
 /*----------------------------------------*/
@@ -663,7 +675,7 @@ main.users {
             gap: .6rem;
         }
         a.add:is(:link, :visited) {
-            background: url(../images/bg-btn-add.png) no-repeat center;
+            background: url('../images/bg-btn-add.png') no-repeat center;
             color: var(--color-fourth);
             height: 30px;
             display: flex;
@@ -681,14 +693,14 @@ main.users {
             }
         }
         a.add:is(:hover) {
-            background: url(../images/btn-hover.png) no-repeat center;
+            background: url('../images/btn-hover.png') no-repeat center;
             transform: scale(1.02) translateY(-4px);
         }
         a.add:is(:active) {
-            background: url(../images/btn-active.png) no-repeat center;
+            background: url('../images/btn-active.png') no-repeat center;
         }
         article.record {
-            background: url(../images/bg-row-odd.png) no-repeat center;
+            background: url('../images/bg-row-odd.png') no-repeat center;
             display: flex;
             align-items: center;
             position: relative;
@@ -707,16 +719,22 @@ main.users {
                     top: -1px;
                 }
                 .mask {
-                    mask-image: url(../images/shape-photo-small.svg);
+                    -webkit-mask-image: url('../images/shape-photo-small.svg'); /* Para navegadores basados en WebKit */
+                    mask-image: url('../images/shape-photo-small.svg');
+                    -webkit-mask-repeat: no-repeat;
                     mask-repeat: no-repeat;
+                    -webkit-mask-position: center top;
                     mask-position: center top;
+                    -webkit-mask-size: 0; /* Ajusta el tamaño de la máscara */
+                    mask-size: contain;
                     object-fit: cover;
                     align-self: center;
+                    top: 5px;
                     position: relative;
-                    height: 50px;
-                    width: 50px;
+                    right: -15px;
+                    height: 60px;
+                    width: 60px;
                 }
-    
             }
             aside {
                 h3 {
@@ -734,11 +752,10 @@ main.users {
                     position: absolute;
                     left: 90px;
                     top: 50px;
-
                 }
             }
             figure.actions {
-                background: url(../images/crud.svg) no-repeat center;
+                background: url('../images/crud.svg') no-repeat center;
                 height: 40px;
                 position: absolute;
                 display: flex;
@@ -761,7 +778,7 @@ main.users {
             }
         }
         article.record:nth-child(even) {
-            background: url(../images/bg-row-odd.png) no-repeat center;
+            background: url('../images/bg-row-odd.png') no-repeat center;
         }
     }
     div.paginate {
@@ -771,20 +788,146 @@ main.users {
         width: 380px;
         margin-top: 0.8rem;
         margin-inline: auto;
+        position: relative;
         span {
             color: var(--txt-color);
             font-size: 16px;
-            font-weight: 400;
+            font-weight: 300;
         }
-        a:is(:link, :visited) {
-            transition: all 0.2s ease-in;
+        a {
+            color: var(--txt-color);
+            font-size: 16px;
+            font-weight: 700;
             text-decoration: none;
         }
-        a.btn-prev:is(:hover) {
-            transform: scale(1.1) translateX(-1px);
+        a.btn-prev,
+        a.btn-next {
+            visibility: visible;
+            pointer-events: all;
+            width: 40px; /* Ajusta según sea necesario */
+            height: 40px; /* Ajusta según sea necesario */
+            position: relative;
+            top: -30px; /* Ajusta la posición vertical */
         }
+        a.btn-prev img,
+        a.btn-next img {
+            width: 100%;
+            height: auto;
+        }
+        a.btn-prev:is(:hover),
         a.btn-next:is(:hover) {
-            transform: scale(1.1) translateX(1px);
+            transform: scale(1.1);
+        }
+    }
+    
+    div.paginate a.btn-prev {
+        margin-right: 0; /* Alinear el botón prev a la izquierda */
+    }
+    
+    div.paginate a.btn-next {
+        margin-left: auto; /* Alinear el botón next a la derecha */
+    }    
+}
+/*----------------------------------------*/
+/* 06- M Y P R O F I L E */
+/*----------------------------------------*/
+main.my-profile {
+    header {
+        .btn-back {
+            visibility: visible;
+            pointer-events: all;
+        }
+    }
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        gap: 0.6rem;
+        figure.avatar {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .border {
+                position: absolute;
+                left: 12px;
+                top: -0px;
+            }
+            .mask {
+                mask-image: url(../images/shape-photo2.svg);
+                mask-repeat: no-repeat;
+                mask-position: center top;
+                object-fit: cover;
+                align-self: center;
+                position: relative;
+                height: 280px;
+                width: 280px;
+            }
+
+        }
+        h2 {
+            color: var(--txt-color);
+            font-weight: bold;
+            font-family: var(--ff-heading);
+            font-size: 24px;
+        }
+        span {
+            color: var(--txt-color);            
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 0.6rem;
+            padding-left: 0.6rem;
+            font-size: 16px;
+            font-weight: 400;
+            width: 170px;
+            }
+        span.data-description {
+            background: url(../images/bg-description.png) no-repeat center;
+            height: 100;
+            width: 300;
+
+        }
+        span.role {
+            color: var(--txt-color);            
+            height: 40px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 0.6rem;
+            padding-left: 0.4rem;
+            font-size: 16px;
+            font-weight: 400;
+            width: 170px;
+        }
+        span.email {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--txt-color);
+            font-weight: bold;
+            font-size: 18px;
+            height: 20px;
+            
+        }
+        span.role {
+            background: url(../images/bg-administrador.svg) no-repeat center;
+            color: var(--txt-color);
+        }
+        div.grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.6rem;
+            span {
+                background: url(../images/input-login.png) no-repeat center;
+            }
+            span:nth-child(-n+2),
+            span:nth-child(n+5) {
+                background: url(../images/input-login.png) no-repeat center;
+            }
         }
     }
 }
