@@ -489,6 +489,7 @@ main.view-game {
 /*----------------------------------------*/
 /* 03- L O G I N */
 /*----------------------------------------*/
+main.my-profile,
 main.login,
 main.register {
     header {
@@ -600,6 +601,64 @@ main.register {
         }
     }
 }
+
+/*----------------------------------------*/
+/* D A S H B O A R D N A V*/
+/*----------------------------------------*/
+main.dashboard,
+main.my-profile,
+main.users  {
+    nav.nav {
+        align-items: center;
+        gap: 0.5rem;
+        figure.avatar {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .border {
+                position: absolute;
+                left: 72px;
+                top: -0px;
+            }
+            .mask {
+                mask-image: url(../images/shape-photo2.svg);
+                mask-repeat: no-repeat;
+                mask-position: center top;
+                object-fit: cover;
+                align-self: center;
+                position: relative;
+                height: 280px;
+                width: 280px;
+            }
+
+        }
+        h2 {
+            color: var(--txt-color);
+            font-family: var(--ff-heading);
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+        }
+        h4 {
+            background: url(../images/bg-role.png) no-repeat center;
+            font-size: 18px;
+            border-radius: 20px;
+            font-weight: 400;
+            color: var(--txt-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        section.scroll {
+            scrollbar-width: none;
+            overflow-y: scroll;
+            height: 640px;
+        }
+    }
+}
+
 
 /*----------------------------------------*/
 /* 04- D A S H B O A R D */
@@ -886,6 +945,109 @@ main.my-profile {
             }
         span.data-description {
             background: url(../images/bg-description.png) no-repeat center;
+            height: 100;
+            width: 300;
+
+        }
+        span.role {
+            color: var(--txt-color);            
+            height: 40px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 0.6rem;
+            padding-left: 0.4rem;
+            font-size: 16px;
+            font-weight: 400;
+            width: 170px;
+        }
+        span.email {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--txt-color);
+            font-weight: bold;
+            font-size: 18px;
+            height: 20px;
+            
+        }
+        span.role {
+            background: url(../images/bg-administrador.svg) no-repeat center;
+            color: var(--txt-color);
+        }
+        div.grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.6rem;
+            span {
+                background: url(../images/input-login.png) no-repeat center;
+            }
+            span:nth-child(-n+2),
+            span:nth-child(n+5) {
+                background: url(../images/input-login.png) no-repeat center;
+            }
+        }
+    }
+}
+/*----------------------------------------*/
+/* C A T E G S H O W */
+/*----------------------------------------*/
+main.cat {
+    header {
+        .btn-back {
+            visibility: visible;
+            pointer-events: all;
+        }
+    }
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        gap: 0.6rem;
+        figure.avatar {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .border {
+                position: absolute;
+                left: 12px;
+                top: -0px;
+            }
+            .mask {
+                mask-image: url(../images/shape-photo2.svg);
+                mask-repeat: no-repeat;
+                mask-position: center top;
+                object-fit: cover;
+                align-self: center;
+                position: relative;
+                height: 280px;
+                width: 280px;
+            }
+
+        }
+        h2 {
+            color: var(--txt-color);
+            font-weight: bold;
+            font-family: var(--ff-heading);
+            font-size: 24px;
+        }
+        span {
+            color: var(--txt-color);            
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 0.6rem;
+            padding-left: 0.6rem;
+            font-size: 16px;
+            font-weight: 400;
+            width: 170px;
+            }
+        span.data-description {
+            background: url(../images/bg-descriptioncat.png) no-repeat center;
             height: 100;
             width: 300;
 
