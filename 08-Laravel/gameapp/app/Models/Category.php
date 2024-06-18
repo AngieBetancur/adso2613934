@@ -21,4 +21,9 @@ class Category extends Model
         'releadedate',
         'description'
     ];
+
+    // Relationship: Category has many games
+    public function games() {
+        return $this->hasMany('App\Models\Games');
+    }
 }
