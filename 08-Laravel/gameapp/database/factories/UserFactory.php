@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'document' => fake()->randomNumber(9, true),
             'fullname' => $name . " " . fake()->lastName(),
             'gender' => $gender,
-            'birthdate' => fake()->dateTimeBetween('1974-01-01', '2024-12-31'),
+            'birthdate' => fake()->dateTimeBetween('1974-01-01', '2004-12-31'),
             'photo' =>substr($photo, 7),
             'phone' => fake()->phoneNumber(),
             'email' => fake()->unique()->safeEmail(),
