@@ -11,6 +11,11 @@ Route::get('/games/', function(){
     return view('listgames')->with('games', $games);
 });
 
+ Route::get('catalogue', function(){
+     return view('catalogue');
+ });
+
+
 Route::get('/game/show/{id}', function($id){
     $game = App\Models\Game::find($id);
     dd($game->toArray());
@@ -40,3 +45,4 @@ Route::get('/viewusers', function(){
     return $code . "</table>";
 });
 
+require __DIR__.'/auth.php';
