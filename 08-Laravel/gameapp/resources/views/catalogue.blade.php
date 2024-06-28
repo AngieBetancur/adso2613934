@@ -17,23 +17,7 @@
                 d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
         </svg>
     </header>
-    <nav class="nav">
-        <img src="{{asset('images/title-menu.svg')}}" alt="" class="title-menu">
-        <menu>
-            <a href="{{url('login')}}">
-                <img src="{{asset('images/ico-login.svg')}}" alt="Login">
-                Login
-            </a>
-            <a href="{{url('register')}}">
-                <img src="{{asset('images/ico-register.svg')}}" alt="Register">
-                Register
-            </a>
-            <a href="{{url('catalogue')}}">
-                <img src="{{asset('images/ico-catalogue.svg')}}" alt="Catalogue">
-                Catalogue
-            </a>
-        </menu>
-    </nav>
+    @include('menuburguer')
     <section class="scroll">
         <form action="" method="post">
             <input type="text" placeholder="Filter" maxlength="18">
@@ -159,4 +143,5 @@
         //---------------
     })
 </script>
+
 @endsection
