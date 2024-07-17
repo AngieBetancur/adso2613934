@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,7 +32,14 @@ Route::get('/game/show/{id}', function(){
     dd($game->toArray());
 });
 
-
+Route::middleware('auth')->group(function () {
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resources([
+        'users' => UserController::class
+    ]);
+});
 
 Route::get('/viewusers', function(){
     $viewusers = App\Models\User::limit(20)->get();
