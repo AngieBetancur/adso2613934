@@ -27,11 +27,11 @@
         <h2>{{Auth::user()->fullname }}</h2>
         <h4>{{Auth::user()->role }}</h4>
         <menu>
-            <a href="my-profile.html">
+            <a href={{url('my-profile')}}>
                 <img src="images/ico-login.svg" alt="">
                 My Profile
             </a>
-            <a href="dashboard.html">
+            <a href={{url('dashboard')}}>
                 <img src="images/ico-categories.svg" alt="">
                 Dashboard
             </a>
@@ -39,7 +39,7 @@
                 <img src="{{('images/ico-logout.svg')}}" alt="Log Out">
                 Logout
             </a>
-            <form id = "action=" action="{{ route('logout') }}" method="post">
+            <form id = "logout" action="{{ route('logout') }}" method="post">
                 @csrf
             </form>
         </menu>

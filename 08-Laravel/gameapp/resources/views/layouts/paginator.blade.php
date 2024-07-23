@@ -6,9 +6,11 @@
                 <img src="{{asset('images/btn-back.png')}}" alt="prev">
             </a>
             @else
-                <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">@lang('pagination.previous')</a></li>
+                <a class="btn-prev" href="{{ $paginator->previousPageUrl()}}">
+                    <img src="{{asset('images/btn-prev.png')}}" alt="prev">
+                </a>
             @endif
-
+            <span>{{ $paginator->currentPage() .'/'. $paginator->lastPage()}}</span>
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
                 <li><a href="{{ $paginator->nextPageUrl() }}" rel="next">@lang('pagination.next')</a></li>

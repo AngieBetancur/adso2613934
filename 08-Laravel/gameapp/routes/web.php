@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -20,6 +21,10 @@ Route::get('/dashboard', function(){
  Route::get('catalogue', function(){
      return view('catalogue');
  });
+
+ Route::get('/my-profile', function(){
+    return view('my-profile');
+});
 
 
 Route::get('/game/show/{id}', function($id){
