@@ -44,7 +44,7 @@
                 @foreach ($users as $user)
                 <article class="record">
                     <figure class="avatar">
-                        <img class="mask" src="{{$user->photo}}" alt="Photo">
+                        <img class="mask" src="{{asset('images').'/'.$user->photo}}" alt="Photo">
                         <img class="border" src="images/shape-border-small.svg" alt="Border">
                     </figure>
                     <aside>
@@ -66,14 +66,13 @@
                 @endforeach			
             </div>
         </section>
-        {{ $users->links()}}
         <div class="paginate">
             <!-- {{ $users->links()}} -->
             {{ $users->links('layouts.paginator')}}
             
-            <span>01/03</span>
+            <!-- <span>01/03</span>
             <a class="btn-prev" href="javascript:;">
                 <img src="images/btn-next.png" alt="next">
-            </a>
+            </a> -->
         </div>
 @endsection
