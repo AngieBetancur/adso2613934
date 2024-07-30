@@ -494,7 +494,7 @@ main.login,
 main.register {
     header {
         .btn-back {
-            visibility: hidden;
+            visibility: all;
             pointer-events: none;
             justify-content: center;
             align-items: center;

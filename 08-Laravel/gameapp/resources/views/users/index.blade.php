@@ -3,6 +3,7 @@
 @section('class', 'users')
 
 @section('content')
+<script src="{{ asset('https://cdn.jsdelivr.net/npm/sweetalert2@11') }}"></script>
 <header>
             <a href="{{url('dashboard')}}" class="btn-back">
                 <img src="images/btn-back.png" alt="Back">
@@ -76,3 +77,15 @@
             </a> -->
         </div>
 @endsection
+@section('js')
+<script>
+    @if (session('message'))
+        Swal.fire({
+            position: "top",
+            title: '{{ session('message')}}',
+            icon:'success',
+            toast: true,
+            timer: 5000
+        })   
+    @endif
+</script>
