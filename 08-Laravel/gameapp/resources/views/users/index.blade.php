@@ -117,3 +117,5 @@
         })
     })
     </script>
+
+@endsection
