@@ -43,79 +43,107 @@
             <a class='add' href='{{ url('users/create') }}'>
                 <img src="images/btn-add.svg" alt="Add">
             </a>
-            @foreach ($users as $user)
-                <article class="record">
-                    <figure class="avatar">
-                        <img class="mask" src="{{ asset('images') . '/' . $user->photo }}" alt="Photo">
-                        <img class="border" src="images/shape-border-small.svg" alt="Border">
-                    </figure>
-                    <aside>
-                        <h3>{{ $user->fullname }}</h3>
-                        <h4>{{ $user->role }}</h4>
-                    </aside>
-                    <figure class="actions">
-                        <a href='{{ url('users/' . $user->id) }}'>
-                            <img src="images/ico-search.svg" alt="Show">
-                        </a>
-                        <a href='{{ url('users/' . $user->id . '/edit') }}'>
-                            <img src="images/ico-edit.svg" alt="Edit">
-                        </a>
-                        <a href="javascript:;" class="delete" data-fullname="{{ $user->fullname }}">
-                            <img src="{{ asset('images/ico-delete.svg') }}" alt="Delete">
-                        </a>
-                        <form action="{{ url('users/' . $user->id) }}" method="POST" style="display: none">
-                            @csrf
-                            @method('DELETE')
-                        </form>
-                    </figure>
-                </article>
-            @endforeach
+            <input type="text" id="qserch" name="qserch" placeholder="Search">
+            <div class="loader"></div>
+            <div id="list">
+                @foreach ($users as $user)
+                    <article class="record">
+                        <figure class="avatar">
+                            <img class="mask" src="{{ asset('images') . '/' . $user->photo }}" alt="Photo">
+                            <img class="border" src="images/shape-border-small.svg" alt="Border">
+                        </figure>
+                        <aside>
+                            <h3>{{ $user->fullname }}</h3>
+                            <h4>{{ $user->role }}</h4>
+                        </aside>
+                        <figure class="actions">
+                            <a href='{{ url('users/' . $user->id) }}'>
+                                <img src="images/ico-search.svg" alt="Show">
+                            </a>
+                            <a href='{{ url('users/' . $user->id . '/edit') }}'>
+                                <img src="images/ico-edit.svg" alt="Edit">
+                            </a>
+                            <a href="javascript:;" class="delete" data-fullname="{{ $user->fullname }}">
+                                <img src="{{ asset('images/ico-delete.svg') }}" alt="Delete">
+                            </a>
+                            <form action="{{ url('users/' . $user->id) }}" method="POST" style="display: none">
+                                @csrf
+                                @method('DELETE')
+                            </form>
+                        </figure>
+                    </article>
+                @endforeach
+            </div>
         </div>
     </section>
     <div class="paginate">
         {{ $users->links('layouts.paginator') }}
 
         <!-- <span>01/03</span>
-                <a class="btn-prev" href="javascript:;">
-                    <img src="images/btn-next.png" alt="next">
-                </a> -->
+                    <a class="btn-prev" href="javascript:;">
+                        <img src="images/btn-next.png" alt="next">
+                    </a> -->
     </div>
 @endsection
 @section('js')
     <script>
-        $(document).ready(function(){
-        //----------------------------------
+        $(document).ready(function() {
+            $('.loader').hide()
+            //----------------------------------
 
-        ///-----------------------------------
-        @if (session('message'))
-            Swal.fire({
-                position: "top",
-                title: '{{ session('message') }}',
-                icon: 'success',
-                toast: true,
-                timer: 5000
+            ///-----------------------------------
+            @if (session('message'))
+                Swal.fire({
+                    position: "top",
+                    title: '{{ session('message') }}',
+                    icon: 'success',
+                    toast: true,
+                    timer: 5000
+                })
+            @endif
+
+            //---------------------------
+            $('figure').on('click', '.delete', function() {
+
+                $fullname = $(this).attr('data-fullname')
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "Desea eliminar a: " + $fullname,
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $(this).next().submit()
+                    }
+                });
             })
-        @endif
-
-        //---------------------------
-        $('figure').on('click', '.delete', function() {
-            
-            $fullname = $(this).attr('data-fullname')
-            Swal.fire({
-                title: "Are you sure?",
-                text: "Desea eliminar a: " + $fullname,
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $(this).next().submit()
-                }
-            });
         })
-    })
-    </script>
+        //----------------------------------
+        $('body').on('keyup', '#qserch', function(e) {
+            e.preventDefault()
+            $query = $(this).val()
+            $token = $('input[name=_token]').val()
+            $model = 'users'
 
+            $('.loader').show()
+            $('#list').hide()
+
+
+            setTimeout(() => {
+                $.post($model + '/search', 
+                { q: $query, _token: $token},
+                function(data) {
+                    $('#list').html(data)
+                    $('.loader').hide()
+                    $('#list').fadeIn('slow')
+                }
+            )
+            }, 1000);
+
+            
+        })
+    </script>
 @endsection

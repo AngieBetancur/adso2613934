@@ -16,8 +16,10 @@
     <section>
         <article class="module">
             <aside>
-                <img class="icon" src="images/img-user.svg" alt="">
-                <span class="rows">20 Rows</span>
+                <img class="icon" src="{{ asset ('images/img-user.svg')}}" alt="">
+                <span class="rows">
+                    {{ App\Models\User::count() }} Rows
+                </span>
             </aside>
             <img class="title" src="images/title-module-users.svg" alt="">
             <a href="{{url('users')}}">
@@ -27,7 +29,7 @@
         <article class="module">
             <aside>
                 <img class="icon" src="images/img-categories.svg" alt="">
-                <span class="rows">10 Rows</span>
+                <span class="rows">{{ App\Models\Category::count() }} Rows</span>
             </aside>
             <img class="title" src="images/title-module-categories.svg" alt="">
             <a href="categories.html">
@@ -37,7 +39,7 @@
         <article class="module">
             <aside>
                 <img class="icon" src="images/img-games.svg" alt="">
-                <span class="rows">6 Rows</span>
+                <span class="rows">{{ App\Models\Game::count() }} Rows</span>
             </aside>
             <img class="title" src="images/title-module-games.svg" alt="">
             <a href="games.html">
