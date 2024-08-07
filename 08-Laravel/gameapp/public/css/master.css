@@ -742,6 +742,11 @@ main.users {
             align-items: center;
             gap: .6rem;
         }
+        div.options{
+            display: flex;
+            gap: .6rem;
+            justify-content: space-between;
+        }
 
         /* HTML: <div class="loader"></div> */
         .loader {
