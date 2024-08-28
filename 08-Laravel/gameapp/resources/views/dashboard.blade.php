@@ -32,7 +32,7 @@
                 <span class="rows">{{ App\Models\Category::count() }} Rows</span>
             </aside>
             <img class="title" src="images/title-module-categories.svg" alt="">
-            <a href="categories.html">
+            <a href="{{url('categories')}}">
                 <img src="images/btn-enter.svg" alt="View">
             </a>
         </article>

@@ -1,14 +1,15 @@
 <?php
 
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/games/', function(){
+Route::get('/games', function(){
     $games = App\Models\Game::all();
     return view('listgames')->with('games', $games);
 });
@@ -42,7 +43,8 @@ Route::middleware('auth')->group(function () {
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resources([
-        'users' => UserController::class
+        'users' => UserController::class,
+        'categories' => CategoryController::class,
     ]);
 });
 
@@ -66,6 +68,7 @@ Route::get('/viewusers', function(){
 });
 //Serch
 Route::post('users/search', [UserController::class, 'search']);
+Route::post('categories/search', [CategoryController::class, 'search']);
 //Exports
 Route::get('export/users/pdf', [UserController::class, 'pdf']);
 Route::get('export/users/excel', [UserController::class, 'excel']);

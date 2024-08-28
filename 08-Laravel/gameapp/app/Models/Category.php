@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    /**
+     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -18,12 +18,18 @@ class Category extends Model
         'name',
         'image',
         'manufacturer',
-        'releadedate',
+        'releasedate',
         'description'
     ];
 
     // Relationship: Category has many games
     public function games() {
-        return $this->hasMany('App\Models\Games');
+        return $this->hasMany('App\Models\Game');
+    }
+
+    public function scopeNames($categories, $q) {
+        if (trim($q)) {
+            $categories->where('name', 'LIKE', "%$q%");
+        }
     }
 }
