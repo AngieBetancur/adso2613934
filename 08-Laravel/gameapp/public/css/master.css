@@ -508,6 +508,7 @@ main.register {
             align-items: center;
             gap: 1rem;
 
+            select,
             div.form-group {
                 display: flex;
                 flex-wrap: wrap;
@@ -523,7 +524,8 @@ main.register {
                     gap: 0.6rem;
                     font-size: 20px;
                 }
-
+                
+      
                 input {
                     border: none;
                     background: url(../images/input-login.png) no-repeat center;

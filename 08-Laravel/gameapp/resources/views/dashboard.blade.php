@@ -42,7 +42,7 @@
                 <span class="rows">{{ App\Models\Game::count() }} Rows</span>
             </aside>
             <img class="title" src="images/title-module-games.svg" alt="">
-            <a href="games.html">
+            <a href="{{url('games')}}">
                 <img src="images/btn-enter.svg" alt="View">
             </a>
         </article>

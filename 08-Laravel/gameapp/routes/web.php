@@ -4,6 +4,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GameController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -45,6 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::resources([
         'users' => UserController::class,
         'categories' => CategoryController::class,
+        'games' => GameController::class,
     ]);
 });
 
