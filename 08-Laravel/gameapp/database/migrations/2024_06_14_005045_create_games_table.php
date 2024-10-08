@@ -11,22 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('games', function (Blueprint $table) {
-            $table->id();
-            $table->string('title')->unique();
-            $table->string('image')->default('no-game.png');
-            $table->string('developer');
-            $table->date('releasedate');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->float('price');
-            $table->string('genre');
-            $table->boolean('slider')->default(0);
-            $table->text('description');
-            $table->timestamps();
-        });
+         Schema::create('games', function (Blueprint $table) {
+             $table->id();
+             $table->string('title')->unique();
+             $table->string('image')->default('no-game.png');
+             $table->string('developer');
+             $table->date('releasedate');
+             $table->unsignedBigInteger('category_id');
+             $table->foreign('category_id')->references('id')->on('categories');
+             $table->unsignedBigInteger('user_id');
+             $table->foreign('user_id')->references('id')->on('users');
+             $table->float('price');
+             $table->string('genre');
+             $table->boolean('slider')->default(0);
+             $table->text('description');
+             $table->timestamps();
+         });
+
+}       
     }
 
     /**

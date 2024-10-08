@@ -58,124 +58,19 @@
                 @foreach ($games as $game)
                     <article class="record">
                         <figure class="avatar">
-                            <img class="mask" src="{{ asset('images/slide-01.png') }}" alt="Photo">
+                            <img class="mask" src="{{ asset('images') . '/' . $game->image }}" alt="Photo">
                             <img class="border" src="images/shape-border-small.svg" alt="Border">
                         </figure>
                         <aside>
-                            <h3>Mario Bros</h3>
-                            <h4>Nintendo</h4>
+                            <h3>{{ $game->title }}</h3>
+                            <h4>{{ $game->category->name }}</h4>
                         </aside>
                         <figure class="actions">
-                            <a href='showg.html'>
+                            <a href='{{ url('games/' . $game->id) }}'>
                                 <img src="images/ico-search.svg" alt="Show">
                             </a>
-                            <a href='editg.html'>
-                                <img src="images/ico-edit.svg" alt="Edit">
-                            </a>
-                            <a href="javascript:;">
-                                <img src="images/ico-delete.svg" alt="Delete">
-                            </a>
-                        </figure>
-                    </article>
-                    <article class="record">
-                        <figure class="avatar">
-                            <img class="mask" src= "{{ asset('images/slide-02.png') }}" alt="Photo">
-                            <img class="border" src="images/shape-border-small.svg" alt="Border">
-                        </figure>
-                        <aside>
-                            <h3>Yooka Laylee</h3>
-                            <h4>Nintendo</h4>
-                        </aside>
-                        <figure class="actions">
-                            <a href='showg2.html'>
-                                <img src="images/ico-search.svg" alt="Show">
-                            </a>
-                            <a href='editg2.html'>
-                                <img src="images/ico-edit.svg" alt="Edit">
-                            </a>
-                            <a href="javascript:;">
-                                <img src="images/ico-delete.svg" alt="Delete">
-                            </a>
-                        </figure>
-                    </article>
-                    <article class="record">
-                        <figure class="avatar">
-                            <img class="mask" src= "{{ asset('images/slide-03.png') }}" alt="Photo">
-                            <img class="border" src="images/shape-border-small.svg" alt="Border">
-                        </figure>
-                        <aside>
-                            <h3>Donkey Kong</h3>
-                            <h4>Nintendo</h4>
-                        </aside>
-                        <figure class="actions">
-                            <a href='showg3.html'>
-                                <img src="images/ico-search.svg" alt="Show">
-                            </a>
-                            <a href='editg3.html'>
-                                <img src="images/ico-edit.svg" alt="Edit">
-                            </a>
-                            <a href="javascript:;">
-                                <img src="images/ico-delete.svg" alt="Delete">
-                            </a>
-                        </figure>
-                    </article>
-                    <article class="record">
-                        <figure class="avatar">
-                            <img class="mask" src="{{ asset('images/slide-01.png') }}" alt="Photo">
-                            <img class="border" src="images/shape-border-small.svg" alt="Border">
-                        </figure>
-                        <aside>
-                            <h3>Mario Bros</h3>
-                            <h4>Nintendo</h4>
-                        </aside>
-                        <figure class="actions">
-                            <a href='showg.html'>
-                                <img src="images/ico-search.svg" alt="Show">
-                            </a>
-                            <a href='editg.html'>
-                                <img src="images/ico-edit.svg" alt="Edit">
-                            </a>
-                            <a href="javascript:;">
-                                <img src="images/ico-delete.svg" alt="Delete">
-                            </a>
-                        </figure>
-                    </article>
-                    <article class="record">
-                        <figure class="avatar">
-                            <img class="mask" src= "{{ asset('images/slide-02.png') }}" alt="Photo">
-                            <img class="border" src="images/shape-border-small.svg" alt="Border">
-                        </figure>
-                        <aside>
-                            <h3>Yooka Laylee</h3>
-                            <h4>Nintendo</h4>
-                        </aside>
-                        <figure class="actions">
-                            <a href='showg2.html'>
-                                <img src="images/ico-search.svg" alt="Show">
-                            </a>
-                            <a href='editg2.html'>
-                                <img src="images/ico-edit.svg" alt="Edit">
-                            </a>
-                            <a href="javascript:;">
-                                <img src="images/ico-delete.svg" alt="Delete">
-                            </a>
-                        </figure>
-                    </article>
-                    <article class="record">
-                        <figure class="avatar">
-                            <img class="mask" src= "{{ asset('images/slide-03.png') }}" alt="Photo">
-                            <img class="border" src="images/shape-border-small.svg" alt="Border">
-                        </figure>
-                        <aside>
-                            <h3>Donkey Kong</h3>
-                            <h4>Nintendo</h4>
-                        </aside>
-                        <figure class="actions">
-                            <a href='showg3.html'>
-                                <img src="images/ico-search.svg" alt="Show">
-                            </a>
-                            <a href='editg3.html'>
-                                <img src="images/ico-edit.svg" alt="Edit">
+                            <a href="javascript:;" class="delete" data-title="{{ $game->title }}">
+                                <img src="{{ asset('images/ico-delete.svg') }}" alt="Delete">
                             </a>
                             <a href="javascript:;">
                                 <img src="images/ico-delete.svg" alt="Delete">

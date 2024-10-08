@@ -28,13 +28,25 @@
         <div class="form-group">
             <img id="upload" class="mask" src="images/bg-svg-mask.svg" alt="">
             <img class="border" src="{{asset('images/shape-border.svg')}}" alt="">
-            <input id="photo" type="file" name="photo" accept="image/*">
+            <input id="photo" type="file" name="image" accept="image/*">
         </div>
         <div class="form-group">
             <label>
-                Name:
+                Title:
             </label>
-            <input type="text" name="email" placeholder="Xbox">
+            <input type="text" value="{{ old('title') }}" name="title" placeholder=".....">
+        </div>
+        <div class="form-group">
+            <label>
+                Developer:
+            </label>
+            <input type="text" value="{{ old('developer') }}" name="developer" placeholder=".....">
+        </div>
+        <div class="form-group">
+            <label>
+                Releasedate:
+            </label>
+            <input type="date" value="{{ old('releasedate') }}" name="releasedate" placeholder=".....">
         </div>
         <select name="category_id">
             <option value="">Select Category</option>
@@ -44,11 +56,28 @@
         </select>
         <div class="form-group">
             <label>
+                Price:
+            </label>
+            <input type="number" value="{{ old('price') }}" name="price" placeholder=".....">
+        </div>
+        <div class="form-group">
+            <label>
+                Genre:
+            </label>
+            <input type="text" value="{{ old('genre') }}" name="genre" placeholder=".....">
+        </div>
+        <select name="slider">
+            <option value="">Select...</option>
+            <option value="1" @if (old('slider') == 1) selected @endif>Active</option>
+            <option value="0" @if (old('slider') == 0) selected @endif>Inactive</option>
+        </select>
+        <div class="form-group">
+            <label>
                 Description:
             </label>
             <input type="text" name="description" placeholder="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates rerum, adipisci enim recusandae eum fuga? Nam ullam possimus id laboriosam, delectus amet fuga in rem at nisi maxime eum numquam.">
         </div>
-
+        
 
         <div class="form-group">
             <button type="submit">

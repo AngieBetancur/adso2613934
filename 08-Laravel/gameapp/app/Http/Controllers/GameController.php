@@ -6,6 +6,7 @@ use App\Models\Game;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\GameRequest;
+use Illuminate\Support\Facades\Auth;
 
 class GameController extends Controller
 {
@@ -36,24 +37,25 @@ class GameController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
-        if ($request->hasFile('photo')) {
-            $photo = time(). '.'. $request->photo->extension();
-            $request->photo->move(public_path('images'), $photo);
+        if ($request->hasFile('image')) {
+            $photo = time(). '.'. $request->image->extension();
+            $request->image->move(public_path('images'), $photo);
         }
 
         $game = new Game;
         $game->title = $request->title;
-        $game->image = $request->image;
+        $game->image = $photo;
         $game->developer = $request ->developer;
         $game->releasedate = $request->releasedate;
         $game->category_id = $request->category_id;
+        $game->user_id = Auth::user()->id;
         $game->price = $request->price;
         $game->genre = $request->genre;
         $game->slider = $request->slider;
         $game->description = $request->description;
 
         if($game->save()){
-            return redirect('games')->with('message', 'The game: '. $game->fullname . 'was successfully added!');
+            return redirect('games')->with('message', 'The game: '. $game->title . 'was successfully added!');
         }
     } 
 
@@ -61,8 +63,8 @@ class GameController extends Controller
      * Display the specified resource.
      */
     public function show(Game $game)
-    {
-        //
+    {   
+        return view('games.show')->with('game', $game);
     }
 
     /**
@@ -70,7 +72,8 @@ class GameController extends Controller
      */
     public function edit(Game $game)
     {
-        //
+        $cats = Category::all();
+        return view('games.edit')->with('game',$game)->with('cats',$cats);
     }
 
     /**
@@ -78,7 +81,25 @@ class GameController extends Controller
      */
     public function update(Request $request, Game $game)
     {
-        //
+        if ($request->hasFile('image')) {
+            $photo = time(). '.'. $request->image->extension();
+            $request->image->move(public_path('images'), $photo);
+        }
+
+        $game->title = $request->title;
+        $game->image = $photo;
+        $game->developer = $request ->developer;
+        $game->releasedate = $request->releasedate;
+        $game->category_id = $request->category_id;
+        $game->user_id = Auth::user()->id;
+        $game->price = $request->price;
+        $game->genre = $request->genre;
+        $game->slider = $request->slider;
+        $game->description = $request->description;
+
+        if($game->save()){
+            return redirect('games')->with('message', 'The game: '. $game->title . 'was successfully added!');
+        }
     }
 
     /**
@@ -86,6 +107,8 @@ class GameController extends Controller
      */
     public function destroy(Game $game)
     {
-        //
+        if($game->delete()){
+            return redirect('games')->with('message', 'The game: '. $game->title . 'was successfully deleted!');
+        }
     }
 }
