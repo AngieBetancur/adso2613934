@@ -69,12 +69,16 @@
                             <a href='{{ url('games/' . $game->id) }}'>
                                 <img src="images/ico-search.svg" alt="Show">
                             </a>
+                            <a href='{{ url('games/' . $game->id . '/edit') }}'>
+                                <img src="images/ico-edit.svg" alt="Edit">
+                            </a>
                             <a href="javascript:;" class="delete" data-title="{{ $game->title }}">
                                 <img src="{{ asset('images/ico-delete.svg') }}" alt="Delete">
                             </a>
-                            <a href="javascript:;">
-                                <img src="images/ico-delete.svg" alt="Delete">
-                            </a>
+                            <form action="{{ url('games/' . $game->id) }}" method="POST" style="display: none">
+                                @csrf
+                                @method('DELETE')
+                            </form>
                         </figure>
                     </article>
                 @endforeach
@@ -112,10 +116,10 @@
             //---------------------------
             $('figure').on('click', '.delete', function() {
 
-                $fullname = $(this).attr('data-fullname')
+                $title = $(this).attr('data-title')
                 Swal.fire({
                     title: "Are you sure?",
-                    text: "Desea eliminar a: " + $fullname,
+                    text: "Desea eliminar a: " + $title,
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
@@ -133,7 +137,7 @@
             e.preventDefault()
             $query = $(this).val()
             $token = $('input[name=_token]').val()
-            $model = 'users'
+            $model = 'games'
 
             $('.loader').show()
             $('#list').hide()

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\GameExport;
 use App\Models\Game;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Http\Requests\GameRequest;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class GameController extends Controller
 {
@@ -102,6 +103,11 @@ class GameController extends Controller
         }
     }
 
+    public function search(Request $request){
+        $games = Game::names($request->q)->paginate(20);
+        return view('games.search')->with('games', $games);
+    }
+
     /**
      * Remove the specified resource from storage.
      */
@@ -110,5 +116,14 @@ class GameController extends Controller
         if($game->delete()){
             return redirect('games')->with('message', 'The game: '. $game->title . 'was successfully deleted!');
         }
+    }
+    public function pdf(){
+        $games= Game::all();
+        $pdf = PDF::loadView('games.pdf', compact('games'));
+        return $pdf->download('allgames.pdf');
+    }
+
+    public function excel(){
+        return \Excel::download(new GameExport, 'allgames.xlsx');
     }
 }
